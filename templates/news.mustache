@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="CAPE.io, see www.cape.io">
+  <meta name="description" content="North Minneapolis News">
+  <meta name="author" content="West Broadway Business and Area Coalition">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NorthMPLS News</title>
+
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
+  <style>
+    h2 {
+      font-weight: 400;
+      font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+    }
+    h4 {
+      font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: #23323f;
+      margin: 5px 0 10px 0;
+      line-height: 26px;
+    }
+    h4 a {
+      color: #d53708;
+    }
+    h4 a:hover {
+      color: #0b5b87;
+      text-decoration: none;
+    }
+    a {
+      text-decoration: none;
+    }
+    img {
+      display: block;
+      float: left;
+      margin-right: 16px;
+      opacity: .9;
+    }
+    ul {
+      list-style-type: none;
+    }
+    li {
+      display: list-item;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    img:hover {
+      opacity: 1;
+    }
+    div.item {
+      border-bottom: 1px solid #CCC;
+      padding-bottom: 25px;
+      padding-top: 20px;
+    }
+    .readMore .button-small {
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      -o-border-radius: 0;
+      border-radius: 0;
+      border: none;
+      background: url(https://s3.amazonaws.com/assets.ngin.com/site_files/3702/i/readMore.png) right center no-repeat;
+      text-shadow: none;
+      font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      color: #fff;
+      padding-left: 8px;
+      padding-right: 8px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<!-- Template version 1.14 -->
+<body>
+<h2>NORTH MPLS NEWS</h2>
+{{#hits.hits}}
+  <div class="item row">
+    <div class="span2">
+      {{#_source.cape_io.picture}}
+      <a href="{{_source.link}}" title="{{_source.message}}" class="picture" target="_blank" >
+        <img class="img-circle" alt="{{_source.name}}" src="http://{{_source.cape_io.picture.host}}.img.labori.us/c75x75/{{_source.cape_io.picture.path}}" width="75" height="75" />
+      </a>
+      {{/_source.cape_io.picture}}
+    </div>
+    <div class="span10">
+      <ul class="details">
+        <li>
+          <h4><a href="{{_source.link}}" class="" target="_blank">{{_source.name}}</a></h4>
+        </li>
+        <li class="dateAuthor">
+          {{_source.created_time}}<span class="expandedView">, {{_source.caption}}</span>
+        </li>
+        <li class="teaser expandedView">
+          {{_source.description}}
+        </li>
+        <li class="commentsAndMore expandedView">
+          <span class="readMore">
+            <a href="{{_source.link}}" class="button-small" target="_blank">Read More</a>
+          </span>
+        </li>
+      {{#cape_io.admin}}
+        <li class="message">
+          {{_source.message}}
+        </li>
+        <li>
+          <ul class="nav nav-pills">
+            {{^cape_io.remove_only}}
+              <li><a href="http://cape.webscript.io/flag?action=added&index={{_index}}&type={{_type}}&id={{_id}}&list={{cape_io.list}}&api_key={{cape_io.api_key}}&user={{cape_io.user}}&result=json" class="btn btn-success btn-mini add"><i class="icon-thumbs-up"></i>Approve</a></li>
+            {{/cape_io.remove_only}}
+            {{^cape_io.add_only}}
+              <li><a href="http://cape.webscript.io/flag?action=removed&index={{_index}}&type={{_type}}&id={{_id}}&list={{cape_io.list}}&api_key={{cape_io.api_key}}&user={{cape_io.user}}&result=json" class="btn btn-danger btn-mini remove"><i class="icon-ban-circle"></i> Remove</a></li>
+            {{/cape_io.add_only}}
+          </ul>
+        </li>
+      {{/cape_io.admin}}
+      </ul>
+    </div>
+  </div>
+{{/hits.hits}}
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+{{#cape_io.admin}}
+  <div class="row">
+    <ul class="nav nav-pills span9 offset3">
+      <li>
+        <a href="http://admin.cape.io/list/{{cape_io.list}}" title="ADMIN!" class="btn btn-primary">ADMIN</a>
+      </li>
+      <li>
+        <a href="http://admin.cape.io/list/{{cape_io.list}}?list_type=list" title="EDIT PREVIEW!" class="btn btn-info">EDIT PREVIEW</a>
+      </li>
+      <li>
+        <a href="http://admin.cape.io/list/{{cape_io.list}}?list_type=preview" title="PREVIEW!" class="btn btn-success">PREVIEW</a>
+      </li>
+      <li>
+        <a href="http://admin.cape.io/list/{{cape_io.list}}?list_type=compile" title="COMPILE!" class="btn btn-warning">COMPILE</a>
+      </li>
+    </ul>
+  </div>
+    <script>
+      $(document).ready(function() {
+        $("a.remove").click(function(e) {
+          var url = $(this).attr('href');
+          $(this).parent().parent().parent().parent().parent().remove();
+          $.get(url);
+          return false;
+        });
+        $("a.add").click(function(e) {
+          var url = $(this).attr('href');
+          $(this).parent().parent().parent().parent().parent().remove();
+          $.get(url);
+          return false;
+        });
+      });
+    </script>
+{{/cape_io.admin}}
+
+<!-- ! COMPILED TIME {{ cape_io.timestring }} !-->
+</body>
+</html>

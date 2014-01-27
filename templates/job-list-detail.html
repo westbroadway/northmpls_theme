@@ -1,0 +1,18 @@
+
+<tr>
+  <td>
+    <strong>
+      <a data-ng-href="#/jobs/{{entry.jobkey}}">{{entry.jobtitle}}</a>
+    </strong>
+    - {{entry.company}}
+    <br />
+    <p>{{entry.snippet}}</p>
+  </td>
+  <td>
+    {{entry.city}} {{entry.zipcode}}<br />
+    {{entry.state}}
+  </td>
+  <td>
+    {{entry.created | date:shortDate}}
+  </td>
+</tr>
