@@ -2,9 +2,11 @@
   <div class="span12">
     <table class="table table-striped">
       <tbody>
-      {{#jobs_wufoo}}
-        {{> job-list-detail}}
-      {{/jobs_wufoo}}
+      <div class="northmpls-org">
+        {{#jobs_wufoo}}
+          {{> job-list-detail}}
+        {{/jobs_wufoo}}
+      </div>
       {{#jobs_indeed}}
         {{> job-list-detail}}
       {{/jobs_indeed}}
