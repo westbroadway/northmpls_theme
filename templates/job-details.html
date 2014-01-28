@@ -1,31 +1,27 @@
 <div class="row-fluid">
   <div class="span12">
-    <a href="#/jobs">&laquo; Back to all jobs</a>
+    <a href="/jobs/index.html">&laquo; Back to all jobs</a>
     <br>
 
-    <h1>{{entry.jobtitle}}</h1>
+    <h1>{{job.jobtitle}}</h1>
 
-    <h2><a href="{{entry.url}}">{{entry.company}}</a></h2>
+    <h2><a href="{{job.url}}">{{job.company}}</a></h2>
 
     <div class="row-fluid">
       <div class="span12">
-        {{entry.city}}, {{entry.state}} {{entry.zipcode}}
-        &nbsp;&nbsp;
+        {{job.city}}, {{job.state}} {{job.zipcode}}
         <span class="job_info_sep">|</span>
-        &nbsp;&nbsp;
-        Posted on {{entry.created | date:shortDate}}
-        &nbsp;&nbsp;
+        Posted on {{job.created}}
         <span class="job_info_sep">|</span>
-        &nbsp;&nbsp;
-        <span class="duration">{{entry.jobtype}}</span>
+        <span class="duration">{{job.jobtype}}</span>
       </div>
     </div>
     <hr>
 
     <h2>Job Description</h2>
 
-    <div class="row-fluid" ng-bind-html-unsafe="entry.teaser"></div>
-    <h4 data-ng-show="entry.apply_url"><a href="{{entry.apply_url}}">Read More and Apply</a></h4>
+    <div class="row-fluid" ng-bind-html-unsafe="job.teaser"></div>
+    <h4 data-ng-show="job.apply_url"><a href="{{job.apply_url}}">Read More and Apply</a></h4>
 
     <hr>
 
@@ -33,26 +29,26 @@
 
       <div class="span4 ">
         <h4>Company</h4>
-        <span>{{entry.company}}</span><br>
+        <span>{{job.company}}</span><br>
 
         <h4>Job Type</h4>
-        <span>{{entry.jobtype}}</span><br>
+        <span>{{job.jobtype}}</span><br>
 
       </div>
       <div class="span4 ">
         <h4>Location</h4>
-        <span>{{entry.city}}, {{entry.state}} {{entry.zipcode}}</span><br/>
+        <span>{{job.city}}, {{job.state}} {{job.zipcode}}</span><br/>
 
         <h4>Job Title</h4>
-        <span>{{entry.jobtitle}}</span><br>
+        <span>{{job.jobtitle}}</span><br>
       </div>
       <div class="span4 ">
 
         <h4>Compensation</h4>
-        <span>{{entry.compensation}}</span><br>
+        <span>{{job.compensation}}</span><br>
 
         <h4>Job Post Source</h4>
-        <span>{{entry.source}}</span><br>
+        <span>{{job.source}}</span><br>
 
       </div>
 
