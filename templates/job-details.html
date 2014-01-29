@@ -20,7 +20,7 @@
 
     <h2>Job Description</h2>
 
-    <div class="row-fluid" ng-bind-html-unsafe="job.teaser"></div>
+    <div class="row-fluid">{{{job.teaser}}}</div>
     <h4 data-ng-show="job.apply_url"><a href="{{job.apply_url}}">Read More and Apply</a></h4>
 
     <hr>
@@ -37,7 +37,7 @@
       </div>
       <div class="span4 ">
         <h4>Location</h4>
-        <span>{{job.city}}, {{job.state}} {{job.zipcode}}</span><br/>
+        <span>{{job.city}}{{^job.city}}Minneapolis{{/job.city}}, {{job.state}}{{^job.state}}MN{{/job.state}} {{job.zipcode}}</span><br/>
 
         <h4>Job Title</h4>
         <span>{{job.jobtitle}}</span><br>
