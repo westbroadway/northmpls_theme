@@ -21,9 +21,9 @@
     <h2>Job Description</h2>
 
     <div class="row-fluid">{{{job.teaser}}}</div>
-    {{#_models.jobs_indeed}}
+    {{#job.apply_url}}
     <h4 data-ng-show="job.apply_url"><a href="{{job.apply_url}}">Read More and Apply</a></h4>
-    {{#_models.jobs_indeed}}
+    {{/job.apply_url}}
     <hr>
 
     <div class="row-fluid">
