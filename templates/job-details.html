@@ -9,9 +9,9 @@
 
     <div class="row-fluid">
       <div class="span12">
-        {{job.city}}, {{job.state}} {{job.zipcode}}
+        {{job.city}}{{^job.city}}Minneapolis{{/job.city}}, {{job.state}}{{^job.state}}MN{{/job.state}} {{job.zipcode}}
         <span class="job_info_sep">|</span>
-        Posted on {{job.created}}
+        Posted on {{job.created}}{{job.date}}
         <span class="job_info_sep">|</span>
         <span class="duration">{{job.jobtype}}</span>
       </div>
@@ -21,8 +21,9 @@
     <h2>Job Description</h2>
 
     <div class="row-fluid">{{{job.teaser}}}</div>
+    {{#_models.jobs_indeed}}
     <h4 data-ng-show="job.apply_url"><a href="{{job.apply_url}}">Read More and Apply</a></h4>
-
+    {{#_models.jobs_indeed}}
     <hr>
 
     <div class="row-fluid">
